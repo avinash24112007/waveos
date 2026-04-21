@@ -1,0 +1,35 @@
+GestureControl/
+├── .venv/
+├── data/
+│   ├── static/          ← static gesture npy files
+│   │   ├── fist/
+│   │   ├── open_palm/
+│   │   └── peace/
+│   └── motion/          ← motion gesture npy files
+│       ├── swipe_left/
+│       ├── swipe_right/
+│       └── circle/
+├── models/
+│   ├── static_model.keras
+│   └── motion_model.keras
+├── src/
+│   ├── collection/
+│   │   ├── static_collect.py    ← data collection for static
+│   │   └── motion_collect.py    ← data collection for motion
+│   ├── training/
+│   │   ├── static_train.py      ← dense/conv1d model training
+│   │   └── motion_train.py      ← LSTM model training
+│   ├── detection/
+│   │   ├── static_detect.py     ← single frame prediction
+│   │   └── motion_detect.py     ← sliding window prediction
+│   ├── commands/
+│   │   ├── profiles.py          ← app specific gesture mappings
+│   │   └── executor.py          ← pyautogui/pycaw execution
+│   └── utils/
+│       ├── landmark_utils.py    ← mediapipe detection + drawing
+│       └── keypoint_utils.py    ← extraction + preprocessing
+├── assets/
+│   └── task_files/              ← mediapipe .task model files
+├── main.py                      ← pipeline entry point
+├── pyproject.toml
+└── README.md

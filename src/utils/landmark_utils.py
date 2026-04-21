@@ -13,13 +13,9 @@ face_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_file
 pose_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_files/pose_landmarker_lite.task'
 hand_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_files/hand_landmarker.task'
 
-
-
-
 face_landmarker_options = FaceLandmarkerOptions(BaseOptions(model_asset_path=face_task_path), running_mode = RunningMode.VIDEO)
 hand_landmarker_options = HandLandmarkerOptions(BaseOptions(model_asset_path=hand_task_path), running_mode = RunningMode.VIDEO)
 pose_landmarker_options = PoseLandmarkerOptions(BaseOptions(model_asset_path=pose_task_path), running_mode = RunningMode.VIDEO)
-
 
 face_landmarker = FaceLandmarker.create_with_options(face_landmarker_options)
 hand_landmarker = HandLandmarker.create_with_options(hand_landmarker_options)

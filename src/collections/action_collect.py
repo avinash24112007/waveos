@@ -11,7 +11,7 @@ print("Creating folders at:", DATA_PATH)
 
 
 
-def action_collection_pipelinr(DATA_PATH, actions, n_sequences, sequence_length, time_sep_seq):
+def action_collection_pipeline(DATA_PATH, actions, n_sequences, sequence_length, time_sep_seq):
     create_folders(
         DATA_PATH=DATA_PATH,
         actions=actions,

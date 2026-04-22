@@ -1,6 +1,6 @@
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
-
+import os
 import numpy as np
 
 
@@ -20,6 +20,9 @@ def train_action_NN(X_Train,
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
     model.fit(X_Train, Y_Train, epochs=epochs, callbacks=callback)
+
+    os.makedirs("models", exist_ok=True)
+    model.save(os.path.join("models", "action_model.keras"))
 
 
 

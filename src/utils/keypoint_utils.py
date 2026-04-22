@@ -7,7 +7,7 @@ import numpy as np
 from src.utils.landmark_utils import detect_landmarks, draw_face_landmark_on_frame, draw_hand_landmark_on_frame, draw_pose_landmark_on_frame
 from src.utils.landmark_utils import hand_landmarker
 
-def     extract_keypoints(hand_result):
+def extract_keypoints(hand_result):
     left_hand =np.zeros(63)
     right_hand = np.zeros(63)
 
@@ -77,7 +77,7 @@ def capture_keypoints_from_frames(DATA_PATH, actions, n_sequences, sequence_leng
                     keypoints = extract_keypoints(hand_result)
                     kp_path = os.path.join(DATA_PATH, action, str(vid_seq_no), str(frame_no))
 
-                    np.save(kp_path, keypoints)
+                    # np.save(kp_path, keypoints)
 
                     window.append(keypoints)
                 
@@ -102,6 +102,8 @@ def capture_keypoints_from_frames(DATA_PATH, actions, n_sequences, sequence_leng
     if extract_kp:
         X = np.array(sequences)
         Y = np.array(to_categorical(labels).astype(int)) # type: ignore
+        print("Input Shape: ", X.shape)
+        print("Output Shape: ", Y.shape)
         return X, Y
     else:
         return None, None

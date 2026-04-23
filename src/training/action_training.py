@@ -15,14 +15,13 @@ def train_action_NN(X_Train,
     model.add(LSTM(64, return_sequences=False))
     model.add(Dense(64, activation='relu'))
     model.add(Dense(32, activation='relu'))
-    model.add(Dense(np.array(actions)[0], activation='softmax'))
+    model.add(Dense(len(actions), activation='softmax'))
 
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
     model.fit(X_Train, Y_Train, epochs=epochs, callbacks=callback)
 
     os.makedirs("models", exist_ok=True)
-    model.save(os.path.join("models", "action_model.keras"))
 
 
 

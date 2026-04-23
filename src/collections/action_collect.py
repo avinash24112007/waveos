@@ -4,12 +4,6 @@ from src.utils.directory_creator import create_folders
 from src.utils.keypoint_utils import capture_keypoints_from_frames
 
 
-DATA_PATH = os.path.join("DATA_test", "STATIC_DATA")
-actions = ["swipe_left", "swipe_right", "circle"]
-n_seq = 10
-print("Creating folders at:", DATA_PATH)
-
-
 
 def action_collection_pipeline(DATA_PATH, actions, n_sequences, sequence_length, time_sep_seq):
     create_folders(

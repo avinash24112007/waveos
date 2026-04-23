@@ -19,7 +19,6 @@ def train_static_Dense_NN(X_TRAIN, Y_TRAIN, actions, epochs, callback):
     model.fit(X_TRAIN, Y_TRAIN, epochs=epochs, callbacks=callback)
 
     os.makedirs("models", exist_ok=True)
-    model.save(os.path.join("models", "ststic_model_type1.keras"))
 
     return model
 
@@ -28,13 +27,13 @@ def train_static_Conv1D_NN(X_TRAIN, Y_TRAIN, actions, epochs, callback):
     model = Sequential()
 
     model.add(Input(shape=(126,)))
-    model.add(Reshape((41, 3)))
+    model.add(Reshape((42, 3)))
     model.add(Conv1D(64, activation='relu', kernel_size=3))
     model.add(Conv1D(128, activation='relu', kernel_size=3))
     model.add(Flatten())
     model.add(Dense(64, activation='relu'))
     model.add(Dropout(0.3))
-    model.add(Dense(np.array(actions)[0], activation='softmax'))
+    model.add(Dense(len(actions), activation='softmax'))
 
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
@@ -42,6 +41,5 @@ def train_static_Conv1D_NN(X_TRAIN, Y_TRAIN, actions, epochs, callback):
 
     
     os.makedirs("models", exist_ok=True)
-    model.save(os.path.join("models", "static_model_type2.keras"))
 
     return model

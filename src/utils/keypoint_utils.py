@@ -64,20 +64,21 @@ def capture_keypoints_from_frames(DATA_PATH, actions, n_sequences, sequence_leng
                 
                 if frame_no == 0:
                     cv2.putText(frame, "Starting Collection", (120, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),4,  cv2.LINE_AA)
-                    cv2.putText(frame, f"Collectiong frames for {action} Frame NO: {frame_no}", (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0),1,  cv2.LINE_AA)
+                    cv2.putText(frame, f"Collectiong frames for {action} SeqNo {vid_seq_no} Frame NO: {frame_no}", (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0),2,  cv2.LINE_AA)
                     cv2.imshow("OpenCV feed", frame)    
 
                     cv2.waitKey(time_sep_seq)
 
                 else:
-                    cv2.putText(frame, f"Collectiong frames for {action} SeqNo {vid_seq_no} Frame NO: {frame_no}", (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255),1,  cv2.LINE_AA)
+                    cv2.putText(frame, f"Collectiong frames for {action} SeqNo {vid_seq_no} Frame NO: {frame_no}", (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255),2,  cv2.LINE_AA)
                     cv2.imshow("OpenCV feed", frame)
 
                 if extract_kp:
                     keypoints = extract_keypoints(hand_result)
-                    kp_path = os.path.join(DATA_PATH, action, str(vid_seq_no), str(frame_no))
 
-                    # np.save(kp_path, keypoints)
+                    kp_path = os.path.join(DATA_PATH, str(action), str(vid_seq_no), str(frame_no))
+
+                    np.save(kp_path, keypoints)
 
                     window.append(keypoints)
                 

@@ -1,5 +1,5 @@
 
-from keras.utils import to_categorical
+# from keras.utils import to_categorical
 import cv2, time, os
 import mediapipe as mp
 import numpy as np
@@ -57,11 +57,6 @@ def capture_keypoints_from_frames(DATA_PATH, actions, n_sequences, sequence_leng
                 hand_result = detect_landmarks(mp_frame, hand_landmarker, ts)
                 draw_hand_landmark_on_frame(frame, hand_result)
 
-                # face_result = detect_landmarks(mp_frame, face_landmarker, ts)
-                # draw_face_landmark_on_frame(frame, face_result)
-                # pose_result = detect_landmarks(mp_frame, pose_landmarker, ts)
-                # draw_pose_landmark_on_frame(frame, pose_result)
-                
                 if frame_no == 0:
                     cv2.putText(frame, "Starting Collection", (120, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0),4,  cv2.LINE_AA)
                     cv2.putText(frame, f"Collectiong frames for {action} SeqNo {vid_seq_no} Frame NO: {frame_no}", (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0),2,  cv2.LINE_AA)

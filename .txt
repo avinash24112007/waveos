@@ -14,22 +14,24 @@ GestureControl/
 │   └── motion_model.keras
 ├── src/
 │   ├── collection/
-│   │   ├── static_collect.py    ← data collection for static
-│   │   └── motion_collect.py    ← data collection for motion
+│   │   ├── static_collect.py    ← data collection for static       ✅
+│   │   └── motion_collect.py    ← data collection for motion       ✅
 │   ├── training/
-│   │   ├── static_train.py      ← dense/conv1d model training
-│   │   └── motion_train.py      ← LSTM model training
+│   │   ├── static_train.py      ← dense/conv1d model training      ✅
+│   │   └── motion_train.py      ← LSTM model training              ✅
 │   ├── detection/
-│   │   ├── static_detect.py     ← single frame prediction
-│   │   └── motion_detect.py     ← sliding window prediction
+│   │   ├── static_detect.py     ← single frame prediction          ✅
+│   │   └── motion_detect.py     ← sliding window prediction        ✅
 │   ├── commands/
 │   │   ├── profiles.py          ← app specific gesture mappings
 │   │   └── executor.py          ← pyautogui/pycaw execution
 │   └── utils/
-│       ├── landmark_utils.py    ← mediapipe detection + drawing
-│       └── keypoint_utils.py    ← extraction + preprocessing
+│       ├── landmark_utils.py    ← mediapipe detection + drawing    ✅
+│       └── keypoint_utils.py    ← extraction + preprocessing       ✅
+|       └── directory_creator.py ← making data folders              ✅
+|       └── gui_utils.py         ← useful GUI utility functions  
 ├── assets/
-│   └── task_files/              ← mediapipe .task model files
+│   └── task_files/              ← mediapipe .task model files      ✅
 ├── main.py                      ← pipeline entry point
 ├── pyproject.toml
 └── README.md

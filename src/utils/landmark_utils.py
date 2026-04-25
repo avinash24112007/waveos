@@ -1,26 +1,33 @@
+import ctypes
+import sys
+import os
+
+BASE_DIR = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
+
+dll_path = os.path.join(BASE_DIR, 'mediapipe', 'tasks', 'c', 'libmediapipe.dll')
+if os.path.exists(dll_path):
+    ctypes.CDLL(dll_path)
 
 import mediapipe as mp
-from mediapipe.tasks.python.vision import FaceLandmarker, FaceLandmarkerOptions
 from mediapipe.tasks.python.vision import HandLandmarker, HandLandmarkerOptions
-from mediapipe.tasks.python.vision import PoseLandmarker, PoseLandmarkerOptions
 
 from mediapipe.tasks.python.vision.drawing_utils import DrawingSpec
 from mediapipe.tasks.python.vision import drawing_utils as mp_drawing
 
+import sys, os
+BASE_DIR = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
 BaseOptions = mp.tasks.BaseOptions
 RunningMode = mp.tasks.vision.RunningMode
 
-face_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_files/face_landmarker.task'
 pose_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_files/pose_landmarker_lite.task'
-hand_task_path = 'C:/Projects/Copmuter control by Human Gesture/assets/task_files/hand_landmarker.task'
 
-face_landmarker_options = FaceLandmarkerOptions(BaseOptions(model_asset_path=face_task_path), running_mode = RunningMode.VIDEO)
-hand_landmarker_options = HandLandmarkerOptions(BaseOptions(model_asset_path=hand_task_path), running_mode = RunningMode.VIDEO, num_hands=2)
-pose_landmarker_options = PoseLandmarkerOptions(BaseOptions(model_asset_path=pose_task_path), running_mode = RunningMode.VIDEO)
+hand_landmarker_options = HandLandmarkerOptions(
+    BaseOptions(model_asset_path=os.path.join(BASE_DIR, 'assets', 'task_files', 'hand_landmarker.task')),
+    running_mode=RunningMode.VIDEO,
+    num_hands=2
+)
 
-face_landmarker = FaceLandmarker.create_from_options(face_landmarker_options)
 hand_landmarker = HandLandmarker.create_from_options(hand_landmarker_options)
-pose_landmarker = PoseLandmarker.create_from_options(pose_landmarker_options)
 
 
 def detect_landmarks(mp_frame,

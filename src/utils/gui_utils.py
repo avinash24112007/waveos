@@ -8,6 +8,7 @@ def get_current_app():
             'chrome': 'chrome',
             'explorer': 'explorer',
             'spotify': 'spotify',
+            'code': 'code'
 
         }
         # 1. Get the active window ID

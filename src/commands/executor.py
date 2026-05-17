@@ -3,10 +3,10 @@ import pyautogui, time
 from src.utils.gui_utils import get_current_app
 
 def volume_up():
-    pyautogui.press('volumeup')
+    pyautogui.press('volumeup', presses=3)
 
 def volume_down():
-    pyautogui.press('volumedown')
+    pyautogui.press('volumedown', presses =3)
 
 # Chrome/ Edge profile
 def scroll_up(): pyautogui.scroll(30)
@@ -31,6 +31,12 @@ def pause_play(): pyautogui.hotkey('space')
 
 def screenshot(): pyautogui.hotkey('win', 'shift', 's')
 
+
+#VS Code Profiles
+def next_code_tab(): pyautogui.hotkey('ctrl', 'pagedown')
+def prev_code_tab(): pyautogui.hotkey('ctrl', 'pageup')
+def open_new_terminal(): pyautogui.hotkey('ctrl', 'shift', '`')
+def split_editor(): pyautogui.hotkey('ctrl', '\\')
 
 last_executed_cmd = 0
 COOLDOWN_CMD = 1.0

@@ -26,7 +26,8 @@ def capture_loop(state: AppState):
     SPOTIFY_PROFILE,
     DEFAULT_PROFILE,
     MOTION_ACTIONS,
-    STATIC_ACTIONS
+    STATIC_ACTIONS,
+    VS_CODE_PROFILES
 )
     from src.utils.landmark_utils import hand_landmarker, detect_landmarks, draw_hand_landmark_on_frame
     from src.utils.keypoint_utils import extract_keypoints
@@ -77,6 +78,9 @@ def capture_loop(state: AppState):
             case 'spotify':
                 execute_command(static_label, SPOTIFY_PROFILE)
                 execute_command(motion_label, SPOTIFY_PROFILE)
+            case 'code':
+                execute_command(static_label, VS_CODE_PROFILES)
+                execute_command(motion_label, VS_CODE_PROFILES)
             case _:
                 execute_command(static_label, DEFAULT_PROFILE)
                 execute_command(motion_label, DEFAULT_PROFILE)

@@ -28,7 +28,7 @@ from src.detection.static_detect import predict_static_pose
 from src.commands.executor import execute_command, detect_change_gui
 
 
-from src.commands.profiles import CHROME_PROFILE, SPOTIFY_PROFILE, DEFAULT_PROFILE
+from src.commands.profiles import CHROME_PROFILE, SPOTIFY_PROFILE, DEFAULT_PROFILE, VS_CODE_PROFILES
 
 from collections import deque
 
@@ -125,6 +125,9 @@ def predict(action_model, static_model, MOTION_ACTIONS, STATIC_ACTIONS):
             case 'spotify':
                 execute_command(static_label, SPOTIFY_PROFILE)
                 execute_command(motion_label, SPOTIFY_PROFILE)
+            case 'vs':
+                execute_command(static_label, VS_CODE_PROFILES)
+                execute_command(motion_label, VS_CODE_PROFILES)
             case _:
                 execute_command(static_label, DEFAULT_PROFILE)
                 execute_command(motion_label, DEFAULT_PROFILE)
